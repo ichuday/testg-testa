@@ -18,6 +18,8 @@
 package testg;
 
 import java.util.Arrays;
+
+import org.apache.beam.runners.dataflow.DataflowRunner;
 import org.apache.beam.sdk.Pipeline;
 import org.apache.beam.sdk.io.TextIO;
 import org.apache.beam.sdk.options.PipelineOptions;
@@ -64,7 +66,7 @@ public class MinimalWordCount {
     // will run with the DirectRunner by default, based on the class path configured
     // in its dependencies.
     PipelineOptions options = PipelineOptionsFactory.create();
-
+    options.setRunner(DataflowRunner.class);
     // In order to run your pipeline, you need to make following runner specific changes:
     //
     // CHANGE 1/3: Select a Beam runner, such as BlockingDataflowRunner
@@ -112,7 +114,7 @@ public class MinimalWordCount {
         // formatted strings) to a series of text files.
         //
         // By default, it will write to a set of files with names like wordcounts-00001-of-00005
-        .apply(TextIO.write().to("gs://cloroxtegbucket/wordcounts/"));
+        .apply(TextIO.write().to("gs://cloroxtegbucket/wordcountsa"));
 
     p.run().waitUntilFinish();
   }

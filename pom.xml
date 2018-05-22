@@ -17,7 +17,7 @@
 	<artifactId>testa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -141,12 +141,12 @@
 
 	<dependencies>
 		<!-- Adds a dependency on a specific version of the Dataflow SDK. -->
-		<dependency>
-			<groupId>com.google.cloud.dataflow</groupId>
-			<artifactId>google-cloud-dataflow-java-sdk-all</artifactId>
-			<version>2.4.0</version>
-		</dependency>
 
+		<dependency>
+			<groupId>org.apache.beam</groupId>
+			<artifactId>beam-runners-google-cloud-dataflow-java</artifactId>
+			<version>[2.1.0, 2.99)</version>
+		</dependency>
 		<!-- Dependencies below this line are specific dependencies needed by the 
 			examples code. -->
 		<dependency>
@@ -163,18 +163,6 @@
 			</exclusions>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.appengine/appengine-maven-plugin -->
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-maven-plugin</artifactId>
-			<version>1.9.63</version>
-		</dependency>
-
-		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
-
 		<dependency>
 			<groupId>com.google.apis</groupId>
 			<artifactId>google-api-services-bigquery</artifactId>
@@ -194,11 +182,6 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.beam</groupId>
-			<artifactId>beam-runners-google-cloud-dataflow-java</artifactId>
-			<version>[2.1.0, 2.99)</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.http-client</groupId>

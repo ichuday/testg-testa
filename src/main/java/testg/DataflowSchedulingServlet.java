@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class DataflowSchedulingServlet
  */
-@WebServlet(name = "dataflowscheduler", value = "/dataflows")
+@WebServlet(name = "dataflowscheduler", value = "/dataflow")
 public class DataflowSchedulingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
