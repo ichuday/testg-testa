@@ -21,8 +21,8 @@ import java.util.Arrays;
 
 import org.apache.beam.runners.dataflow.DataflowRunner;
 import org.apache.beam.sdk.Pipeline;
+import org.apache.beam.runners.dataflow.options.DataflowPipelineOptions;
 import org.apache.beam.sdk.io.TextIO;
-import org.apache.beam.sdk.options.PipelineOptions;
 import org.apache.beam.sdk.options.PipelineOptionsFactory;
 import org.apache.beam.sdk.transforms.Count;
 import org.apache.beam.sdk.transforms.Filter;
@@ -65,8 +65,11 @@ public class MinimalWordCount {
     // options for our pipeline, such as the runner you wish to use. This example
     // will run with the DirectRunner by default, based on the class path configured
     // in its dependencies.
-    PipelineOptions options = PipelineOptionsFactory.create();
+	DataflowPipelineOptions options = PipelineOptionsFactory.as(DataflowPipelineOptions.class);
     options.setRunner(DataflowRunner.class);
+	options.setProject("beta-194409");
+	options.setStagingLocation("gs://cloroxtegbucket/staging");
+	DataflowRunner.fromOptions(options);
     // In order to run your pipeline, you need to make following runner specific changes:
     //
     // CHANGE 1/3: Select a Beam runner, such as BlockingDataflowRunner
@@ -90,7 +93,7 @@ public class MinimalWordCount {
     // the input text (a set of Shakespeare's texts).
 
     // This example reads a public data set consisting of the complete works of Shakespeare.
-    p.apply(TextIO.read().from("gs://cloroxtegbucket/WordCount"))
+    p.apply(TextIO.read().from("gs://cloroxtegbucket/wc.txt"))
 
         // Concept #2: Apply a FlatMapElements transform the PCollection of text lines.
         // This transform splits the lines in PCollection<String>, where each element is an

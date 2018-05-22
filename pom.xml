@@ -140,13 +140,12 @@
 	</build>
 
 	<dependencies>
-		<!-- Adds a dependency on a specific version of the Dataflow SDK. -->
-
 		<dependency>
 			<groupId>org.apache.beam</groupId>
 			<artifactId>beam-runners-google-cloud-dataflow-java</artifactId>
 			<version>[2.1.0, 2.99)</version>
 		</dependency>
+
 		<!-- Dependencies below this line are specific dependencies needed by the 
 			examples code. -->
 		<dependency>
