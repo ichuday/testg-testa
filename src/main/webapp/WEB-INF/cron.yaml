@@ -1,0 +1,4 @@
+cron:
+ - description: Cron job to schedule Dataflow pipeline
+   url: /dataflows
+   schedule: every 30 mins
